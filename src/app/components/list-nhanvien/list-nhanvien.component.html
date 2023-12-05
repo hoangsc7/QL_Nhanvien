@@ -1,0 +1,39 @@
+<div class="list row">
+  <div class="search-form">
+    <label for="tenphongban">Tên phòng ban:</label>
+    <input type="text" id="tenphongban" [(ngModel)]="searchTenphongban" />
+    <label for="tuoi">Tuổi (<=):</label>
+    <input type="number" id="tuoi" [(ngModel)]="searchTuoi" />
+
+    <button class="btn btn-primary" (click)="search()">Tìm kiếm</button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Mã nhân viên</th>
+        <th scope="col">Họ tên</th>
+        <th scope="col">Tên phòng ban</th>
+        <th scope="col">Giới tính</th>
+        <th scope="col">Tuổi</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let nhanvien of nhanviens; let i = index" [class.active]="i == currentIndex" >
+        <!-- <tr *ngFor="let nhanvien of nhanviens; let i = index" [class.active]="i == currentIndex">  -->
+        <th scope="row" [style.color]="(nhanvien.tuoi !== undefined && nhanvien.tuoi.valueOf() > 55) ? 'red' : 'black'">{{ i + 1 }}</th>
+        <td [style.color]="(nhanvien.tuoi !== undefined && nhanvien.tuoi.valueOf() > 55) ? 'red' : 'black'">{{ nhanvien.manv }}</td>
+        <td [style.color]="(nhanvien.tuoi !== undefined && nhanvien.tuoi.valueOf() > 55) ? 'red' : 'black'">{{ nhanvien.tennhanvien }}</td>
+        <td [style.color]="(nhanvien.tuoi !== undefined && nhanvien.tuoi.valueOf() > 55) ? 'red' : 'black'">{{ nhanvien.tenphongban }}</td>
+        <td [style.color]="(nhanvien.tuoi !== undefined && nhanvien.tuoi.valueOf() > 55) ? 'red' : 'black'">{{ nhanvien.gioitinh }}</td>
+        <td [style.color]="(nhanvien.tuoi !== undefined && nhanvien.tuoi.valueOf() > 55) ? 'red' : 'black'">{{ nhanvien.tuoi }}</td>
+        <td>
+          <button class="btn btn-danger text-white" (click)="deletenhanvien(nhanvien.id)">Delete</button>
+          <button class="btn btn-success bg-rose-400 text-white" [routerLink]="['/nhanvien', nhanvien.id]">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

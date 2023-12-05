@@ -1,0 +1,33 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="title">Mã nhân viên</label>
+        <input type="text" class="form-control" id="manv" required [(ngModel)]="nhanvien.manv" name="title" />
+      </div>
+      <div class="form-group">
+        <label for="title">Họ tên</label>
+        <input type="text" class="form-control" id="tennhanvien" required [(ngModel)]="nhanvien.tennhanvien"
+          name="title" />
+      </div>
+      <div class="form-group">
+        <label for="title">Tên phòng ban</label>
+        <input type="text" class="form-control" id="tenphongban" required [(ngModel)]="nhanvien.tenphongban"
+          name="title" />
+      </div>
+      <div class="form-group">
+        <label for="title">Giới tính</label>
+        <input type="text" class="form-control" id="gioitinh" required [(ngModel)]="nhanvien.gioitinh" name="title" />
+      </div>
+      <div class="form-group">
+        <label for="title">Tuổi</label>
+        <input type="text" class="form-control" id="tuoi" required [(ngModel)]="nhanvien.tuoi" name="title" />
+      </div>
+      <button (click)="saveTutorial()" class="btn btn-success">Submit</button>
+    </div>
+    <div *ngIf="submitted">
+      <h4>Tutorial was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newTutorial()">Add</button>
+    </div>
+  </div>
+</div>
